@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977be4c30cc640faac22a2885dec5794, type: 3}
   m_Name: BulletSettings
   m_EditorClassIdentifier: 
-  _bulletCreateDelay: 3
-  _bulletLifeTime: 10
-  _speed: 10
+  _bulletCreateDelay: 1
+  _bulletLifeTime: 5
+  _speed: 17
+  _damage: 1

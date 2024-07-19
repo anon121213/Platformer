@@ -497,7 +497,6 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 1377499889}
-  - {fileID: 0}
   _allData: {fileID: 11400000, guid: 2b52e17f2f714844a8f02a182a0420f5, type: 2}
 --- !u!1 &1975530626
 GameObject:

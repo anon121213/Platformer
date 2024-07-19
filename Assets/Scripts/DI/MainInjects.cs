@@ -6,6 +6,7 @@ using Data.StaticData;
 using Factories;
 using FSM;
 using FSM.States;
+using Hud.Health;
 using Player;
 using Player.Input;
 using Player.Move;
@@ -25,6 +26,7 @@ namespace DI
             RegisterFsm(builder);
             RegisterServices(builder);
             RegisterFactory(builder);
+            RegisterMVP(builder);
         }
         
         private void RegisterServices(IContainerBuilder builder)
@@ -42,6 +44,13 @@ namespace DI
             builder.Register<ICalculateBulletSpawnPosition, CalculateBulletSpawnPosition>(Lifetime.Singleton);
 
             builder.Register<SceneLoader>(Lifetime.Singleton);
+        }
+
+        private void RegisterMVP(IContainerBuilder builder)
+        {
+            builder.Register<IHealthModel, HealthModel>(Lifetime.Singleton);
+
+            builder.Register<HealthPresenter>(Lifetime.Singleton);
         }
         
         private void RegisterFsm(IContainerBuilder builder)

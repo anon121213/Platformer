@@ -1,9 +1,9 @@
 ﻿using AssetLoader;
 using Bullets;
 using Cysharp.Threading.Tasks;
-using Data.Services;
 using Data.StaticData;
 using Hud;
+using Hud.Health;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -14,7 +14,7 @@ namespace Factories
     {
         private readonly IObjectResolver _resolver;
         private readonly ILoadAssetService _loadAssetService;
-        
+        private readonly HealthPresenter _healthPresenter;
         private readonly AssetsReferences _assets;
 
         private GameObject _hud;
@@ -23,9 +23,11 @@ namespace Factories
 
         public GameFactory(IObjectResolver resolver,
             IStaticDataProvider dataProvider,
-            ILoadAssetService loadAssetService)
+            ILoadAssetService loadAssetService,
+            HealthPresenter healthPresenter)
         {
             _loadAssetService = loadAssetService;
+            _healthPresenter = healthPresenter;
             _resolver = resolver;
             _assets = dataProvider.AssetsReferences;
         }
@@ -55,6 +57,10 @@ namespace Factories
             _hudView = _hud.GetComponent<HudView>();
 
             hp = _resolver.Instantiate(hp, _hudView.HpRoot);
+
+            HealthVeiw healthVeiw = hp.GetComponent<HealthVeiw>();
+            
+            _healthPresenter.Constructor(healthVeiw);
 
             return hp;
         }

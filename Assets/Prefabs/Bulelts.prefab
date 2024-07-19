@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8706601d86cb455a8d181546ddab19e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletRoot: {fileID: 7093972977408727758}
-  CreateBullets: 1
+  player: {fileID: 0}
+  bulletRoot: {fileID: 0}
+  createBullets: 1
