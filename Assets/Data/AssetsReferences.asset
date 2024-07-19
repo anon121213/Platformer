@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssetsReferences
   m_EditorClassIdentifier: 
   MainScene:
-    m_AssetGUID: 
+    m_AssetGUID: 2cda990e2423bbf4892e6590ba056729
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -22,8 +22,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  UpgradeSystem:
-    m_AssetGUID: 
+  Player:
+    m_AssetGUID: 9d0e979cd048de040a0c9b02a27acd87
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

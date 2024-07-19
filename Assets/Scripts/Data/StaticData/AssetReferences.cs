@@ -11,6 +11,7 @@ namespace Data.StaticData
         
         [Space]
         public AssetReference Hud;
-        public AssetReference UpgradeSystem;
+
+        public AssetReference Player;
     }
 }

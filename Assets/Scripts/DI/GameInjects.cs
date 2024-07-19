@@ -2,8 +2,10 @@
 using Bootstrap;
 using Data.Services;
 using Data.StaticData;
+using Factories;
 using FSM;
 using FSM.States;
+using Player.Input;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -29,13 +31,15 @@ namespace DI
             builder.Register<IDisposeService, DisposeService>(Lifetime.Singleton);
 
             builder.Register<IStaticDataProvider, StaticDataProvider>(Lifetime.Singleton).WithParameter(_allData);
+            
+            builder.Register<IInput, InputService>(Lifetime.Singleton);
 
             builder.Register<SceneLoader>(Lifetime.Singleton);
         }
         
         private void RegisterFsm(IContainerBuilder builder)
         {
-            builder.Register<GameStateMachine>(Lifetime.Singleton);
+            builder.Register<GameStateMachine>(Lifetime.Scoped);
 
             builder.Register<LoadLevelState>(Lifetime.Singleton);
 

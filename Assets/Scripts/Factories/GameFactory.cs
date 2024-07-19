@@ -1,8 +1,10 @@
 ﻿using AssetLoader;
+using Cysharp.Threading.Tasks;
 using Data.Services;
 using Data.StaticData;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Factories
 {
@@ -25,6 +27,15 @@ namespace Factories
             _loadAssetService = loadAssetService;
             _resolver = resolver;
             _assets = dataProvider.AssetsReferences;
+        }
+
+        public async UniTask<GameObject> CreatePlayer()
+        {
+            GameObject player = await _loadAssetService.GetAsset<GameObject>(_assets.Player);
+            
+            _resolver.Instantiate(player);
+
+            return player;
         }
     }
 }
