@@ -9,9 +9,12 @@ namespace Data.StaticData
     {
         public AssetReference MainScene;
         
-        [Space]
         public AssetReference Hud;
 
+        public AssetReference Health;
+        
         public AssetReference Player;
+
+        public AssetReference Bullet;
     }
 }

@@ -1,4 +1,5 @@
-﻿using FSM;
+﻿using Cinemachine;
+using FSM;
 using FSM.States;
 using UnityEngine;
 using VContainer;
@@ -7,6 +8,8 @@ namespace Bootstrap
 {
     public class MainBootstrapper: MonoBehaviour
     {
+        [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+        
         private GameStateMachine _gameStateMachine;
         private CreateGameObjectsState _createGameObjectsState;
         
@@ -21,7 +24,7 @@ namespace Bootstrap
         public void Start()
         {
             AddStates(_gameStateMachine);
-            _gameStateMachine.Enter<CreateGameObjectsState>();
+            _gameStateMachine.Enter<CreateGameObjectsState, CinemachineVirtualCamera>(_virtualCamera);
         }
 
         private void AddStates(GameStateMachine gameStateMachine)

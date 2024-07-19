@@ -6,5 +6,7 @@ namespace Factories
     public interface IGameFactory
     {
         UniTask<GameObject> CreatePlayer();
+        UniTask<GameObject> CreateHud();
+        UniTask<GameObject> CreateHp();
     }
 }

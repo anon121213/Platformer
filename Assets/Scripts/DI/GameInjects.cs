@@ -44,8 +44,6 @@ namespace DI
             builder.Register<LoadLevelState>(Lifetime.Singleton);
 
             builder.Register<BootstrapState>(Lifetime.Singleton);
-
-            builder.Register<LoadDefaultSettingsState>(Lifetime.Singleton);
         }
     }
 }

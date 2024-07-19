@@ -7,6 +7,7 @@ using FSM;
 using FSM.States;
 using Player;
 using Player.Input;
+using Pool;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -47,14 +48,16 @@ namespace DI
 
             builder.Register<BootstrapState>(Lifetime.Singleton);
 
-            builder.Register<LoadDefaultSettingsState>(Lifetime.Singleton);
-
             builder.Register<CreateGameObjectsState>(Lifetime.Scoped);
         }
         
         private void RegisterFactory(IContainerBuilder builder)
         {
-            builder.Register<IGameFactory, GameFactory>(Lifetime.Scoped);
+            builder.Register<IGameFactory, GameFactory>(Lifetime.Singleton);
+
+            builder.Register<IBulletFactory, BulletFactory>(Lifetime.Singleton);
+
+            builder.Register<BulletPool>(Lifetime.Singleton);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace AssetLoader
             }
             else
             {
-                Debug.LogError("Не удалось загрузить префаб по пути: ");
+                Debug.LogError($"Не удалось загрузить префаб по пути: {path}");
             }
         }
     }

@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Data.Services;
 using Data.StaticData;
+using Hud;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -17,6 +18,7 @@ namespace Factories
         private readonly AssetsReferences _assets;
 
         private GameObject _hud;
+        private HudView _hudView;
 
         public GameFactory(IObjectResolver resolver,
             IStaticDataProvider dataProvider,
@@ -33,9 +35,29 @@ namespace Factories
         {
             GameObject player = await _loadAssetService.GetAsset<GameObject>(_assets.Player);
             
-            _resolver.Instantiate(player);
+            player = _resolver.Instantiate(player);
 
             return player;
+        }
+
+        public async UniTask<GameObject> CreateHud()
+        {
+            _hud = await _loadAssetService.GetAsset<GameObject>(_assets.Hud);
+
+            _hud = _resolver.Instantiate(_hud);
+
+            return _hud;
+        }
+
+        public async UniTask<GameObject> CreateHp()
+        {
+            GameObject hp = await _loadAssetService.GetAsset<GameObject>(_assets.Health);
+
+            _hudView = _hud.GetComponent<HudView>();
+
+            hp = _resolver.Instantiate(hp, _hudView.HpRoot);
+
+            return hp;
         }
     }
 }

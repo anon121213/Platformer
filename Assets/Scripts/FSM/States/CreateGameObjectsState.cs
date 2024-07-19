@@ -1,29 +1,38 @@
-﻿using Factories;
+﻿using Cinemachine;
+using Factories;
+using UnityEngine;
 
 namespace FSM.States
 {
-    public class CreateGameObjectsState: IState
+    public class CreateGameObjectsState: IPayloadedState<CinemachineVirtualCamera>
     {
         private readonly IGameFactory _gameFactory;
         private readonly GameStateMachine _gameStateMachine;
-
+        private CinemachineVirtualCamera _virtualCamera;
+        
         public CreateGameObjectsState(IGameFactory gameFactory,
             GameStateMachine gameStateMachine)
         {
             _gameFactory = gameFactory;
             _gameStateMachine = gameStateMachine;
         }
-        
-        public void Enter()
+
+        public void Enter(CinemachineVirtualCamera payload)
         {
+            _virtualCamera = payload;
             CreateGameObjects();
         }
 
         private async void CreateGameObjects()
         {
-            await _gameFactory.CreatePlayer();
+            GameObject player = await _gameFactory.CreatePlayer();
+            
+            await _gameFactory.CreateHud();
+            await _gameFactory.CreateHp();
+            
+            _virtualCamera.Follow = player.transform;
         }
-        
+
         public void Exit()
         {
             
