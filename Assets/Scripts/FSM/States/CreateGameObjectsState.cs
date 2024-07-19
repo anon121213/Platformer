@@ -29,6 +29,7 @@ namespace FSM.States
             
             await _gameFactory.CreateHud();
             await _gameFactory.CreateHp();
+            await _gameFactory.CreateBulletsCreator();
             
             _virtualCamera.Follow = player.transform;
         }

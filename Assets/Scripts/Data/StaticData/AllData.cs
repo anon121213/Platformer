@@ -7,5 +7,6 @@ namespace Data.StaticData
     {
         public DefaultPlayerSettings DefaultPlayerSettings;
         public AssetsReferences AssetsReferences;
+        public BulletSettings BulletSettings;
     }
 }

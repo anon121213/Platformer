@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player
+namespace Player.Move
 {
     public class MoveService : IMoveService
     {

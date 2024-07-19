@@ -1,5 +1,5 @@
 ﻿using AssetLoader;
-using Boolets;
+using Bullets;
 using Cysharp.Threading.Tasks;
 using Data.StaticData;
 using UnityEngine;

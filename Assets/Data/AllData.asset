@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultPlayerSettings: {fileID: 11400000, guid: affebb33a022a834cbd4fd5c0e47af24, type: 2}
   AssetsReferences: {fileID: 11400000, guid: a335d739f0954d8468cef5a671aaa15e, type: 2}
+  BulletSettings: {fileID: 11400000, guid: 7363172c8f7e3ca48a368b9ad426ff1e, type: 2}

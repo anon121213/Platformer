@@ -1,5 +1,6 @@
 ﻿using AssetLoader;
 using Bootstrap;
+using Bullets;
 using Data.Services;
 using Data.StaticData;
 using Factories;
@@ -7,6 +8,7 @@ using FSM;
 using FSM.States;
 using Player;
 using Player.Input;
+using Player.Move;
 using Pool;
 using UnityEngine;
 using VContainer;
@@ -36,6 +38,8 @@ namespace DI
             builder.Register<IInput, InputService>(Lifetime.Singleton);
 
             builder.Register<IMoveService, MoveService>(Lifetime.Singleton);
+
+            builder.Register<ICalculateBulletSpawnPosition, CalculateBulletSpawnPosition>(Lifetime.Singleton);
 
             builder.Register<SceneLoader>(Lifetime.Singleton);
         }

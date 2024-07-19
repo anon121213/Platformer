@@ -1,4 +1,5 @@
 ﻿using AssetLoader;
+using Bullets;
 using Cysharp.Threading.Tasks;
 using Data.Services;
 using Data.StaticData;
@@ -12,20 +13,18 @@ namespace Factories
     public class GameFactory : IGameFactory
     {
         private readonly IObjectResolver _resolver;
-        private readonly IDisposeService _disposebleService;
         private readonly ILoadAssetService _loadAssetService;
         
         private readonly AssetsReferences _assets;
 
         private GameObject _hud;
+        private GameObject _player;
         private HudView _hudView;
 
         public GameFactory(IObjectResolver resolver,
             IStaticDataProvider dataProvider,
-            IDisposeService disposeService,
             ILoadAssetService loadAssetService)
         {
-            _disposebleService = disposeService;
             _loadAssetService = loadAssetService;
             _resolver = resolver;
             _assets = dataProvider.AssetsReferences;
@@ -33,11 +32,11 @@ namespace Factories
 
         public async UniTask<GameObject> CreatePlayer()
         {
-            GameObject player = await _loadAssetService.GetAsset<GameObject>(_assets.Player);
+            _player = await _loadAssetService.GetAsset<GameObject>(_assets.Player);
             
-            player = _resolver.Instantiate(player);
+            _player = _resolver.Instantiate(_player);
 
-            return player;
+            return _player;
         }
 
         public async UniTask<GameObject> CreateHud()
@@ -58,6 +57,19 @@ namespace Factories
             hp = _resolver.Instantiate(hp, _hudView.HpRoot);
 
             return hp;
+        }
+        
+        public async UniTask<GameObject> CreateBulletsCreator()
+        {
+            GameObject bulletsCreator = await _loadAssetService.GetAsset<GameObject>(_assets.BulletsCreator);
+            
+            bulletsCreator = _resolver.Instantiate(bulletsCreator);
+
+            BulletsCreator creatorComponent = bulletsCreator.GetComponent<BulletsCreator>();
+
+            creatorComponent.player = _player;
+
+            return bulletsCreator;
         }
     }
 }

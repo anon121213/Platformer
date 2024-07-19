@@ -4,5 +4,6 @@
     {
         AssetsReferences AssetsReferences { get; }
         DefaultPlayerSettings DefaultPlayerSettings { get; }
+        BulletSettings BulletSettings { get; }
     }
 }

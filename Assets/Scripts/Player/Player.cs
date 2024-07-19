@@ -1,5 +1,6 @@
 using Data.StaticData;
 using Player.Input;
+using Player.Move;
 using UniRx;
 using UnityEngine;
 using VContainer;

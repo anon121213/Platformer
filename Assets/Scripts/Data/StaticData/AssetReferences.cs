@@ -15,6 +15,8 @@ namespace Data.StaticData
         
         public AssetReference Player;
 
+        public AssetReference BulletsCreator;
+
         public AssetReference Bullet;
     }
 }

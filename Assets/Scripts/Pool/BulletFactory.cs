@@ -1,4 +1,4 @@
-﻿using Boolets;
+﻿using Bullets;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
@@ -23,6 +23,7 @@ namespace Pool
         public Bullet CreateBullet(Vector2 position, Transform root, Quaternion rotation)
         {
             Bullet bullet = _bulletPool.GetObjectFromPool(position, root, rotation);
+            bullet.transform.position = position;
             _resolver.Inject(bullet);
 
             bullet.OnDisabled += ReturnToPool;

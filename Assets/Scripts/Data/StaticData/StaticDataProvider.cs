@@ -6,9 +6,11 @@
         {
             AssetsReferences = allData.AssetsReferences;
             DefaultPlayerSettings = allData.DefaultPlayerSettings;
+            BulletSettings = allData.BulletSettings;
         }
 
         public AssetsReferences AssetsReferences { get; }
         public DefaultPlayerSettings DefaultPlayerSettings { get; }
+        public BulletSettings BulletSettings { get; }
     }
 }

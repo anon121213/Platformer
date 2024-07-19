@@ -5,22 +5,26 @@ using Unity.Mathematics;
 using UnityEngine;
 using VContainer;
 
-namespace Boolets
+namespace Bullets
 {
     public class BulletsCreator: MonoBehaviour
     {
-        public Transform BulletRoot;
-        public bool CreateBullets = true;
-        
+        public GameObject player;
+        public Transform bulletRoot;
+        public bool createBullets = true;
+
         private IBulletFactory _bulletFactory;
         private IStaticDataProvider _staticDataProvider;
+        private ICalculateBulletSpawnPosition _calculateBulletSpawnPosition;
 
         [Inject]
         private void Inject(IBulletFactory bulletsFactory,
-            IStaticDataProvider staticDataProvider)
+            IStaticDataProvider staticDataProvider,
+            ICalculateBulletSpawnPosition calculateBulletSpawnPosition)
         {
             _bulletFactory = bulletsFactory;
             _staticDataProvider = staticDataProvider;
+            _calculateBulletSpawnPosition = calculateBulletSpawnPosition;
         }
 
         private async void Start()
@@ -31,11 +35,12 @@ namespace Boolets
 
         private async UniTask CreateBullet()
         {
-            while (CreateBullets)
+            while (createBullets)
             {
-                await UniTask.WaitForSeconds(_staticDataProvider.DefaultPlayerSettings.BulletCreateDelay);
-                Bullet bullet = _bulletFactory.CreateBullet(transform.position, BulletRoot, quaternion.identity);
-                bullet.Enable(_staticDataProvider.DefaultPlayerSettings.BulletLifeTime);
+                await UniTask.WaitForSeconds(_staticDataProvider.BulletSettings.BulletCreateDelay);
+                
+                Bullet bullet = _bulletFactory.CreateBullet(_calculateBulletSpawnPosition.Calculate(), bulletRoot, quaternion.identity);
+                bullet.Enable(player, _staticDataProvider.BulletSettings.Speed, _staticDataProvider.BulletSettings.BulletLifeTime);
             }
         }
     }
