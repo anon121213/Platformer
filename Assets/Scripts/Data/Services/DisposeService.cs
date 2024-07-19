@@ -7,13 +7,13 @@ namespace Data.Services
     {
         private List<IDisposable> _disposibleObjects = new();
 
-        public void AddDisposableObject(IDisposable presentor) =>
-            _disposibleObjects.Add(presentor);
+        public void AddDisposableObject(IDisposable dosposable) =>
+            _disposibleObjects.Add(dosposable);
 
         public void Dispose()
         {
-            foreach (IDisposable presentor in _disposibleObjects)
-                presentor.Dispose();
+            foreach (IDisposable dosposable in _disposibleObjects)
+                dosposable.Dispose();
         }
     }
 }

@@ -10,9 +10,9 @@ namespace Hud.Health
         private ReactiveProperty<int> _hp;
 
         public IReadOnlyReactiveProperty<int> Hp => _hp;
-        
+
         public int FullHp
-        { 
+        {
             get => _fullHp;
             set => _fullHp = Mathf.Clamp(value, 0, int.MaxValue);
         }
@@ -24,6 +24,6 @@ namespace Hud.Health
         }
 
         public void TakeDamage(int damage) =>
-            _hp.Value -= damage;
+                _hp.Value = Mathf.Clamp(_hp.Value - damage, 0, int.MaxValue);
     }
 }

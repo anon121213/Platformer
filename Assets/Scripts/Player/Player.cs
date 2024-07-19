@@ -1,3 +1,5 @@
+using System;
+using Data.Services;
 using Data.StaticData;
 using Player.Input;
 using Player.Move;
@@ -14,23 +16,28 @@ namespace Player
         private IInput _input;
         private IMoveService _moveService;
         private IStaticDataProvider _staticDataProvider;
-
+        private IDisposable _abilitySubscribe;
+        private IDisposeService _disposeService;
+        
         private float _speed;
         
         [Inject]
         private void Inject(IInput input, 
             IMoveService moveService,
-            IStaticDataProvider staticDataProvider)
+            IStaticDataProvider staticDataProvider,
+            IDisposeService disposeService)
         {
             _input = input;
             _moveService = moveService;
             _staticDataProvider = staticDataProvider;
+            _disposeService = disposeService;
         }
 
         private void Awake()
         {
             _input.EnableInput();
-            _input.AbilityPressed.Subscribe(_ => UseAbility());
+            _abilitySubscribe = _input.AbilityPressed.Subscribe(_ => UseAbility());
+            _disposeService.AddDisposableObject(_abilitySubscribe);
             _speed = _staticDataProvider.DefaultPlayerSettings.Speed;
         }
 

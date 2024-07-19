@@ -26,8 +26,11 @@ namespace Hud.Health
             _hpSubscription = _healthModel.Hp.Subscribe(_ => UpdateUI());
         }
 
-        public void TakeDamage() =>
+        public void TakeDamage()
+        {
             _healthModel.TakeDamage(_staticDataProvider.BulletSettings.Damage);
+            Debug.Log(_healthModel.Hp);
+        }
 
         private void UpdateUI() =>
             _healthVeiw.UpdateHealthBar(_healthModel.Hp.Value, _healthModel.FullHp);

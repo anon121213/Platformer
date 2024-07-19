@@ -4,6 +4,6 @@ namespace Data.Services
 {
     public interface IDisposeService
     {
-        void AddDisposableObject(IDisposable disposable);
+        void AddDisposableObject(IDisposable dosposable);
     }
 }
