@@ -99,7 +99,7 @@ namespace Factories
 
             DieView dieView = dieWindow.GetComponent<DieView>();
             
-            _dieServices.Constructor(dieView);
+            _dieServices.Constructor(dieView, _player);
             
             return dieWindow;
         }

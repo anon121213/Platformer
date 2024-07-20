@@ -52,8 +52,6 @@ namespace DI
 
             builder.Register<IAbility, Invisible>(Lifetime.Singleton);
             
-            builder.Register<IDoAnchor, DoAnchor>(Lifetime.Singleton);
-            
             builder.Register<SceneLoader>(Lifetime.Singleton);
         }
 
@@ -95,6 +93,10 @@ namespace DI
         private void RegisterAnimations(IContainerBuilder builder)
         {
             builder.Register<IFadeAnim, FadeAnim>(Lifetime.Singleton);
+
+            builder.Register<IDoAnchor, DoAnchor>(Lifetime.Singleton);
+
+            builder.Register<IDoScale, DoScale>(Lifetime.Singleton);
         }
     }
 }

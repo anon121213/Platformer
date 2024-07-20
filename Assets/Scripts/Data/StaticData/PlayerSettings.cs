@@ -14,6 +14,9 @@ namespace Data.StaticData
         [SerializeField, Range(0, 1)] private float _fadeIntensity;
         [SerializeField, Range(0, 5)] private float _fadeDuration;
         
+        [SerializeField, Range(0, 5)] private float _dieAnimDuration;
+        [SerializeField] private Vector3 _dieAnimScale;
+        
 
         public int Hp =>
             _healthPoint;
@@ -35,5 +38,11 @@ namespace Data.StaticData
 
         public float FadeDuration =>
             _fadeDuration;
+
+        public float DieAnimDuration =>
+            _dieAnimDuration;
+
+        public Vector3 DieAnimScale =>
+            _dieAnimScale;
     }   
 }
