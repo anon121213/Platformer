@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34710814cfc8c234b963f76ee734e7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDamageble: 1
+  sprite: {fileID: 5713795693912450335}
   _rb: {fileID: 8398666143017698633}
 --- !u!1 &3877697873437178573
 GameObject:

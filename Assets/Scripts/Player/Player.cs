@@ -13,6 +13,7 @@ namespace Player
     public class Player : MonoBehaviour
     {
         public bool isDamageble = true;
+        public SpriteRenderer sprite;
         
         [SerializeField] private Rigidbody2D _rb;
         

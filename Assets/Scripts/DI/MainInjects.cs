@@ -1,4 +1,5 @@
-﻿using AssetLoader;
+﻿using Animations;
+using AssetLoader;
 using Bootstrap;
 using Bullets;
 using Data.Services;
@@ -28,6 +29,7 @@ namespace DI
             RegisterServices(builder);
             RegisterFactory(builder);
             RegisterMVP(builder);
+            RegisterAnimations(builder);
         }
         
         private void RegisterServices(IContainerBuilder builder)
@@ -74,6 +76,11 @@ namespace DI
             builder.Register<IBulletFactory, BulletFactory>(Lifetime.Singleton);
 
             builder.Register<BulletPool>(Lifetime.Singleton);
+        }
+
+        private void RegisterAnimations(IContainerBuilder builder)
+        {
+            builder.Register<IFadeAnim, FadeAnim>(Lifetime.Singleton);
         }
     }
 }
