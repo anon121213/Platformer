@@ -11,6 +11,9 @@ namespace Data.StaticData
         [SerializeField] private bool _isDamageble;
         [SerializeField, Range(0, 500)] private int _inviseCoolDown;
         [SerializeField, Range(0, 500)] private int _inviseLifeTime;
+        [SerializeField, Range(0, 1)] private float _fadeIntensity;
+        [SerializeField, Range(0, 5)] private float _fadeDuration;
+        
 
         public int Hp =>
             _healthPoint;
@@ -26,5 +29,11 @@ namespace Data.StaticData
 
         public int InviseLifeTime =>
             _inviseLifeTime;
+
+        public float FadeIntensity =>
+            _fadeIntensity;
+
+        public float FadeDuration =>
+            _fadeDuration;
     }   
 }

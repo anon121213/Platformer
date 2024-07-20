@@ -9,7 +9,7 @@ namespace Player.Abilities
         private readonly IStaticDataProvider _staticDataProvider;
         private readonly IFadeAnim _fadeAnim;
 
-        private bool _isOnCooldown = false;
+        private bool _isOnCooldown;
         
         public Invisible(IStaticDataProvider staticDataProvider,
             IFadeAnim fadeAnim)
@@ -29,19 +29,22 @@ namespace Player.Abilities
 
         private async UniTask SetDamageble(Player player)
         {
-            _fadeAnim.DoFadeAnim(player.sprite, 0.3f, 1);
+            _fadeAnim.DoFadeAnim(player.sprite, _staticDataProvider.PlayerSettings.FadeIntensity,
+                _staticDataProvider.PlayerSettings.FadeDuration);
+            
             _isOnCooldown = true;
             
             player.isDamageble = false;
             await UniTask.WaitForSeconds(_staticDataProvider.PlayerSettings.InviseLifeTime);
             player.isDamageble = true;
+            
+            _fadeAnim.DoFadeAnim(player.sprite, 1, 0.5f);
         }
 
         private async UniTask SetCooldown(Player player)
         {
             await UniTask.WaitForSeconds(_staticDataProvider.PlayerSettings.InviseCoolDown);
             
-            _fadeAnim.DoFadeAnim(player.sprite, 1, 0.5f);
             _isOnCooldown = false;
         }
     }
