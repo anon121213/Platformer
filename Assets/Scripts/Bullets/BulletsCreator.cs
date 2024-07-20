@@ -17,18 +17,18 @@ namespace Bullets
         private IBulletFactory _bulletFactory;
         private IStaticDataProvider _staticDataProvider;
         private ICalculateBulletSpawnPosition _calculateBulletSpawnPosition;
-        private HealthPresenter _healthPresenter;
+        private HealthPresentor _healthPresentor;
 
         [Inject]
         private void Inject(IBulletFactory bulletsFactory,
             IStaticDataProvider staticDataProvider,
             ICalculateBulletSpawnPosition calculateBulletSpawnPosition,
-            HealthPresenter healthPresenter)
+            HealthPresentor healthPresentor)
         {
             _bulletFactory = bulletsFactory;
             _staticDataProvider = staticDataProvider;
             _calculateBulletSpawnPosition = calculateBulletSpawnPosition;
-            _healthPresenter = healthPresenter;
+            _healthPresentor = healthPresentor;
         }
 
         private async void Start()
@@ -46,7 +46,7 @@ namespace Bullets
                 Bullet bullet = _bulletFactory.CreateBullet(_calculateBulletSpawnPosition.Calculate(),
                     bulletRoot, quaternion.identity);
                 
-                bullet.Constructor(player, _healthPresenter, _staticDataProvider.BulletSettings.Speed,
+                bullet.Constructor(player, _healthPresentor, _staticDataProvider.BulletSettings.Speed,
                     _staticDataProvider.BulletSettings.BulletLifeTime);
             }
         }

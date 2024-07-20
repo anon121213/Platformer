@@ -5,12 +5,12 @@
         public StaticDataProvider(AllData allData)
         {
             AssetsReferences = allData.AssetsReferences;
-            DefaultPlayerSettings = allData.DefaultPlayerSettings;
+            PlayerSettings = allData.playerSettings;
             BulletSettings = allData.BulletSettings;
         }
 
         public AssetsReferences AssetsReferences { get; }
-        public DefaultPlayerSettings DefaultPlayerSettings { get; }
+        public PlayerSettings PlayerSettings { get; }
         public BulletSettings BulletSettings { get; }
     }
 }

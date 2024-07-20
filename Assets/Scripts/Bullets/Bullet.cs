@@ -14,11 +14,11 @@ namespace Bullets
         
         private readonly CancellationTokenSource _cts = new();
         private Vector2 _direction;
-        private HealthPresenter _healthPresenter;
+        private HealthPresentor _healthPresentor;
 
-        public void Constructor(GameObject player, HealthPresenter healthPresenter, float speed, float timer)
+        public void Constructor(GameObject player, HealthPresentor healthPresentor, float speed, float timer)
         {
-            _healthPresenter = healthPresenter;
+            _healthPresentor = healthPresentor;
             
             SetTransform(player, speed);
             StartTimer(timer).AttachExternalCancellation(_cts.Token);
@@ -29,16 +29,19 @@ namespace Bullets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.gameObject.CompareTag("Player"))
+            other.gameObject.TryGetComponent(out Player.Player player);
+
+            if (player?.isDamageble != true)
                 return;
             
-            _healthPresenter.TakeDamage();
+            _healthPresentor.TakeDamage();
             OnDisabled?.Invoke(this);
         }
 
         private void SetTransform(GameObject player, float speed)
         {
             _direction = (player.transform.position - transform.position).normalized * speed;
+            
             float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }

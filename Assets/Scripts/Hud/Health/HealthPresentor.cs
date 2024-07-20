@@ -1,11 +1,10 @@
 ﻿using System;
 using Data.StaticData;
 using UniRx;
-using UnityEngine;
 
 namespace Hud.Health
 {
-    public class HealthPresenter: IDisposable
+    public class HealthPresentor: IDisposable
     {
         private readonly IHealthModel _healthModel;
         private readonly IStaticDataProvider _staticDataProvider;
@@ -13,7 +12,7 @@ namespace Hud.Health
         private HealthVeiw _healthVeiw;
         private IDisposable _hpSubscription;
         
-        public HealthPresenter(IHealthModel healthModel,
+        public HealthPresentor(IHealthModel healthModel,
             IStaticDataProvider staticDataProvider)
         {
             _healthModel = healthModel;
@@ -26,11 +25,8 @@ namespace Hud.Health
             _hpSubscription = _healthModel.Hp.Subscribe(_ => UpdateUI());
         }
 
-        public void TakeDamage()
-        {
+        public void TakeDamage() =>
             _healthModel.TakeDamage(_staticDataProvider.BulletSettings.Damage);
-            Debug.Log(_healthModel.Hp);
-        }
 
         private void UpdateUI() =>
             _healthVeiw.UpdateHealthBar(_healthModel.Hp.Value, _healthModel.FullHp);

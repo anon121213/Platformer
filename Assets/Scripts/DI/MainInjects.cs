@@ -8,6 +8,7 @@ using FSM;
 using FSM.States;
 using Hud.Health;
 using Player;
+using Player.Abilities;
 using Player.Input;
 using Player.Move;
 using Pool;
@@ -43,6 +44,8 @@ namespace DI
 
             builder.Register<ICalculateBulletSpawnPosition, CalculateBulletSpawnPosition>(Lifetime.Singleton);
 
+            builder.Register<IAbility, Invisible>(Lifetime.Singleton);
+
             builder.Register<SceneLoader>(Lifetime.Singleton);
         }
 
@@ -50,7 +53,7 @@ namespace DI
         {
             builder.Register<IHealthModel, HealthModel>(Lifetime.Singleton);
 
-            builder.Register<HealthPresenter>(Lifetime.Singleton);
+            builder.Register<HealthPresentor>(Lifetime.Singleton);
         }
         
         private void RegisterFsm(IContainerBuilder builder)

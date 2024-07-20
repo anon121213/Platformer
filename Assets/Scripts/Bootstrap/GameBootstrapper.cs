@@ -1,5 +1,6 @@
 using FSM;
 using FSM.States;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Bootstrap
@@ -22,6 +23,8 @@ namespace Bootstrap
 
         public void Start()
         {
+            Application.targetFrameRate = 240;
+            
             AddStates(_gameStateMachine);
             _gameStateMachine.Enter<BootstrapState>();
         }

@@ -14,7 +14,7 @@ namespace Factories
     {
         private readonly IObjectResolver _resolver;
         private readonly ILoadAssetService _loadAssetService;
-        private readonly HealthPresenter _healthPresenter;
+        private readonly HealthPresentor _healthPresentor;
         private readonly AssetsReferences _assets;
 
         private GameObject _hud;
@@ -24,10 +24,10 @@ namespace Factories
         public GameFactory(IObjectResolver resolver,
             IStaticDataProvider dataProvider,
             ILoadAssetService loadAssetService,
-            HealthPresenter healthPresenter)
+            HealthPresentor healthPresentor)
         {
             _loadAssetService = loadAssetService;
-            _healthPresenter = healthPresenter;
+            _healthPresentor = healthPresentor;
             _resolver = resolver;
             _assets = dataProvider.AssetsReferences;
         }
@@ -60,7 +60,7 @@ namespace Factories
 
             HealthVeiw healthVeiw = hp.GetComponent<HealthVeiw>();
             
-            _healthPresenter.Constructor(healthVeiw);
+            _healthPresentor.Constructor(healthVeiw);
 
             return hp;
         }

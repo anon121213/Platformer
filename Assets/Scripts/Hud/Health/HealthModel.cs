@@ -19,7 +19,7 @@ namespace Hud.Health
 
         public HealthModel(IStaticDataProvider staticDataProvider)
         {
-            _fullHp = staticDataProvider.DefaultPlayerSettings.HP;
+            _fullHp = staticDataProvider.PlayerSettings.Hp;
             _hp = new ReactiveProperty<int>(_fullHp);
         }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7093972977408727758}
   - component: {fileID: 4862844753664322225}
   m_Layer: 0
-  m_Name: Bulelts
+  m_Name: BuleltsCreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

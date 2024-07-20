@@ -3,7 +3,7 @@
     public interface IStaticDataProvider
     {
         AssetsReferences AssetsReferences { get; }
-        DefaultPlayerSettings DefaultPlayerSettings { get; }
+        PlayerSettings PlayerSettings { get; }
         BulletSettings BulletSettings { get; }
     }
 }
