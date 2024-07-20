@@ -1,6 +1,9 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Data.StaticData;
 using Pool;
+using Unity.VisualScripting;
 using UnityEngine;
 using VContainer;
 
@@ -15,6 +18,8 @@ namespace Birds
         private IStaticDataProvider _staticDataProvider;
         private ICalculateBirdSpawnPosition _calculateBirdSpawnPosition;
 
+        private readonly CancellationTokenSource _cts = new();
+
         [Inject]
         private void Inject(IBirdFactory birdFactory,
             IStaticDataProvider staticDataProvider,
@@ -28,7 +33,7 @@ namespace Birds
         private async void Start()
         {
             await _birdFactory.Warmup();
-            await CreateBird();
+            await CreateBird().AttachExternalCancellation(_cts.Token);
         }
         
         private async UniTask CreateBird()
@@ -54,5 +59,8 @@ namespace Birds
                 bird.Constructor(speed, lifeTime);
             }
         }
+
+        private void OnDestroy() =>
+            _cts.Dispose();
     }
 }

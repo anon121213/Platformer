@@ -16,11 +16,9 @@ namespace AssetLoader
         {
             if (_assets.TryGetValue(path, out Object asset))
                 return asset as TObject;
-            else
-            {
-                await LoadAsset(path);
-                return await GetAsset<TObject>(path);
-            }
+    
+            await LoadAsset(path);
+            return await GetAsset<TObject>(path);
         }
         
         private async UniTask LoadAsset(AssetReference path)
@@ -39,15 +37,10 @@ namespace AssetLoader
 
         private void OnPrefabLoaded(AsyncOperationHandle<Object> handle, AssetReference path)
         {
-            if (handle.Status == AsyncOperationStatus.Succeeded)
-            {
-                if (!_assets.ContainsValue(handle.Result))
-                    _assets.Add(path, handle.Result);
-            }
+            if (handle.Status == AsyncOperationStatus.Succeeded && !_assets.ContainsValue(handle.Result))
+                _assets.Add(path, handle.Result);
             else
-            {
                 Debug.LogError($"Не удалось загрузить префаб по пути: {path}");
-            }
         }
     }
 }

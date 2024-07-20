@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Data.StaticData;
 using Hud.Health;
 using Pool;
@@ -19,6 +21,8 @@ namespace Bullets
         private ICalculateBulletSpawnPosition _calculateBulletSpawnPosition;
         private HealthPresentor _healthPresentor;
 
+        private readonly CancellationTokenSource _cts = new();
+
         [Inject]
         private void Inject(IBulletFactory bulletsFactory,
             IStaticDataProvider staticDataProvider,
@@ -34,7 +38,7 @@ namespace Bullets
         private async void Start()
         {
             await _bulletFactory.Warmup();
-            await CreateBullet();
+            await CreateBullet().AttachExternalCancellation(_cts.Token);
         }
 
         private async UniTask CreateBullet()
@@ -50,5 +54,8 @@ namespace Bullets
                     _staticDataProvider.BulletSettings.BulletLifeTime);
             }
         }
+
+        private void OnDestroy() =>
+            _cts.Dispose();
     }
 }
