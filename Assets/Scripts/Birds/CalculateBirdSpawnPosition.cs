@@ -10,8 +10,6 @@ namespace Birds
         {
             _side = Random.Range(0, 2);
             
-            Debug.Log(_side);
-            
             Vector3 spawnPosition = Vector3.zero;
 
             float halfHeight = Screen.height / 2;

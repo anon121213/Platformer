@@ -10,5 +10,6 @@ namespace Data.StaticData
         public AssetsReferences AssetsReferences;
         public BulletSettings BulletSettings;
         public BirdSettings BirdSettings;
+        public DieWindowSettings DieWindowSettings;
     }
 }

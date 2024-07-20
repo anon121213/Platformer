@@ -52,6 +52,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ea2ff4251dbdb946a259a9e6d77df20
+    m_Address: Assets/Prefabs/DiePunnel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f53a23e7edbd8334e9b1cc647d7ecde8, type: 2}
   m_SchemaSet:

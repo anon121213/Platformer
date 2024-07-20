@@ -11,11 +11,8 @@ namespace Hud.Health
 
         public IReadOnlyReactiveProperty<int> Hp => _hp;
 
-        public int FullHp
-        {
-            get => _fullHp;
-            set => _fullHp = Mathf.Clamp(value, 0, int.MaxValue);
-        }
+        public int FullHp =>
+            _fullHp;
 
         public HealthModel(IStaticDataProvider staticDataProvider)
         {

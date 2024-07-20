@@ -10,5 +10,6 @@ namespace Factories
         UniTask<GameObject> CreateHp();
         UniTask<GameObject> CreateBulletsCreator();
         UniTask<GameObject> CreateBirdCreator();
+        UniTask<GameObject> CreateDieWindow();
     }
 }

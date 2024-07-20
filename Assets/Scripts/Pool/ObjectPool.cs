@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Pool
 {
-    public abstract class ObjectPool<T> where T : Component
+    public abstract class ObjectPool<T>: IDisposable where T : Component
     {
         protected T Prefab;
         
@@ -11,12 +13,10 @@ namespace Pool
 
         public T GetObjectFromPool(Vector2 position, Transform root, Quaternion rotation) 
         {
-            T spawnedGameObject;
-
             if (_inactiveInstances.Count == 0)
                 return Object.Instantiate(Prefab, position, rotation, root);
 
-            spawnedGameObject = _inactiveInstances.Pop();
+            T spawnedGameObject = _inactiveInstances.Pop();
             spawnedGameObject.gameObject.SetActive(true);
             
             return spawnedGameObject;
@@ -26,6 +26,11 @@ namespace Pool
         {
             toReturn.gameObject.SetActive(false);
             _inactiveInstances.Push(toReturn);
+        }
+
+        public void Dispose()
+        {
+            _inactiveInstances.Clear();
         }
     }    
 }

@@ -2,6 +2,7 @@
 using Bullets;
 using Cysharp.Threading.Tasks;
 using Data.StaticData;
+using DieServices;
 using Hud;
 using Hud.Health;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Factories
         private readonly IObjectResolver _resolver;
         private readonly ILoadAssetService _loadAssetService;
         private readonly HealthPresentor _healthPresentor;
+        private readonly IDieServices _dieServices;
         private readonly AssetsReferences _assets;
 
         private GameObject _hud;
@@ -24,10 +26,12 @@ namespace Factories
         public GameFactory(IObjectResolver resolver,
             IStaticDataProvider dataProvider,
             ILoadAssetService loadAssetService,
-            HealthPresentor healthPresentor)
+            HealthPresentor healthPresentor,
+            IDieServices dieServices)
         {
             _loadAssetService = loadAssetService;
             _healthPresentor = healthPresentor;
+            _dieServices = dieServices;
             _resolver = resolver;
             _assets = dataProvider.AssetsReferences;
         }
@@ -85,6 +89,19 @@ namespace Factories
             birdCreator = _resolver.Instantiate(birdCreator);
 
             return birdCreator;
+        }
+
+        public async UniTask<GameObject> CreateDieWindow()
+        {
+            GameObject dieWindow = await _loadAssetService.GetAsset<GameObject>(_assets.DieWindow);
+            
+            dieWindow = _resolver.Instantiate(dieWindow, _hudView.DieWindowRoot);
+
+            DieView dieView = dieWindow.GetComponent<DieView>();
+            
+            _dieServices.Constructor(dieView);
+            
+            return dieWindow;
         }
     }
 }

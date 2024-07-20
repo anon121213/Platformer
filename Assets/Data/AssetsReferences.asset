@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  BootstrapScene:
+    m_AssetGUID: 22495493655362f409d484093fdf20b3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Hud:
     m_AssetGUID: fc057160ca58ab54baa32a2b35273a52
     m_SubObjectName: 
@@ -37,6 +42,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  BirdCreator:
+    m_AssetGUID: 6e25a7e9d7263b343a607898d73fcf7d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Bullet:
     m_AssetGUID: a09070f100aa7b8498c98194f3f082a0
     m_SubObjectName: 
@@ -44,6 +54,11 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   Bird:
     m_AssetGUID: 043aa5e24c968ea468d72c1a240fad20
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  DieWindow:
+    m_AssetGUID: 8ea2ff4251dbdb946a259a9e6d77df20
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

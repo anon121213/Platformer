@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  bulletRoot: {fileID: 0}
+  bulletRoot: {fileID: 7093972977408727758}
   createBullets: 1

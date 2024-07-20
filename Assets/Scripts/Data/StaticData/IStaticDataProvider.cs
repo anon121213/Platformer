@@ -6,5 +6,6 @@
         PlayerSettings PlayerSettings { get; }
         BulletSettings BulletSettings { get; }
         BirdSettings BirdSettings { get; }
+        DieWindowSettings DieWindowSettings { get; }
     }
-}
+}    
