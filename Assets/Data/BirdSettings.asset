@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b0597acd294226a8ad4fe6a5afc6b0, type: 3}
-  m_Name: PlayerSettings
+  m_Script: {fileID: 11500000, guid: 1ad9346479b449f4abb605b0c7d4f528, type: 3}
+  m_Name: BirdSettings
   m_EditorClassIdentifier: 
-  _healthPoint: 3
-  _speed: 10
-  _isDamageble: 1
-  _inviseCoolDown: 5
-  _inviseLifeTime: 5
-  _fadeIntensity: 0.3
-  _fadeDuration: 0.5
+  _speed: 5
+  _lifeTime: 10

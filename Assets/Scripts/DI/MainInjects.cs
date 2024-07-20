@@ -1,5 +1,6 @@
 ﻿using Animations;
 using AssetLoader;
+using Birds;
 using Bootstrap;
 using Bullets;
 using Data.Services;
@@ -46,6 +47,8 @@ namespace DI
 
             builder.Register<ICalculateBulletSpawnPosition, CalculateBulletSpawnPosition>(Lifetime.Singleton);
 
+            builder.Register<ICalculateBirdSpawnPosition, CalculateBirdSpawnPosition>(Lifetime.Singleton);
+
             builder.Register<IAbility, Invisible>(Lifetime.Singleton);
 
             builder.Register<SceneLoader>(Lifetime.Singleton);
@@ -74,6 +77,10 @@ namespace DI
             builder.Register<IGameFactory, GameFactory>(Lifetime.Singleton);
 
             builder.Register<IBulletFactory, BulletFactory>(Lifetime.Singleton);
+
+            builder.Register<IBirdFactory, BirdFactory>(Lifetime.Singleton);
+
+            builder.Register<BirdPool>(Lifetime.Singleton);
 
             builder.Register<BulletPool>(Lifetime.Singleton);
         }

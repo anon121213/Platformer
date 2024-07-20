@@ -8,7 +8,7 @@ namespace Factories
         UniTask<GameObject> CreatePlayer();
         UniTask<GameObject> CreateHud();
         UniTask<GameObject> CreateHp();
-
         UniTask<GameObject> CreateBulletsCreator();
+        UniTask<GameObject> CreateBirdCreator();
     }
 }

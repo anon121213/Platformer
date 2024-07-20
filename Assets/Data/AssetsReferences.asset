@@ -32,8 +32,18 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  BulletsCreator:
+    m_AssetGUID: fdfbbe759654480419bc1b58c5f7c375
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Bullet:
-    m_AssetGUID: 
+    m_AssetGUID: a09070f100aa7b8498c98194f3f082a0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  Bird:
+    m_AssetGUID: 043aa5e24c968ea468d72c1a240fad20
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

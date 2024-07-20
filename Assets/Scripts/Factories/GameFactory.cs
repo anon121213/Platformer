@@ -77,5 +77,14 @@ namespace Factories
 
             return bulletsCreator;
         }
+
+        public async UniTask<GameObject> CreateBirdCreator()
+        {
+            GameObject birdCreator = await _loadAssetService.GetAsset<GameObject>(_assets.BirdCreator);
+
+            birdCreator = _resolver.Instantiate(birdCreator);
+
+            return birdCreator;
+        }
     }
 }

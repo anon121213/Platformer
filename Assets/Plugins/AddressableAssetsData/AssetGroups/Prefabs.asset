@@ -42,6 +42,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 043aa5e24c968ea468d72c1a240fad20
+    m_Address: Assets/Prefabs/Bird.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e25a7e9d7263b343a607898d73fcf7d
+    m_Address: Assets/Prefabs/Birds.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f53a23e7edbd8334e9b1cc647d7ecde8, type: 2}
   m_SchemaSet:

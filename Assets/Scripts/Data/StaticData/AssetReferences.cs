@@ -17,6 +17,10 @@ namespace Data.StaticData
 
         public AssetReference BulletsCreator;
 
+        public AssetReference BirdCreator;
+        
         public AssetReference Bullet;
+
+        public AssetReference Bird;
     }
 }
