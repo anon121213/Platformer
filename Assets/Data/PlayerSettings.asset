@@ -19,3 +19,5 @@ MonoBehaviour:
   _inviseLifeTime: 5
   _fadeIntensity: 0.3
   _fadeDuration: 0.5
+  _dieAnimDuration: 0.5
+  _dieAnimScale: {x: 0, y: 0, z: 0}
