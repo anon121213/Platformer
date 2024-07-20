@@ -1,4 +1,6 @@
-﻿using Cinemachine;
+﻿using System.Collections.Generic;
+using Cinemachine;
+using Cysharp.Threading.Tasks;
 using Factories;
 using UnityEngine;
 
@@ -26,13 +28,18 @@ namespace FSM.States
         private async void CreateGameObjects()
         {
             GameObject player = await _gameFactory.CreatePlayer();
+            _virtualCamera.Follow = player.transform;
             
             await _gameFactory.CreateHud();
-            await _gameFactory.CreateHp();
-            await _gameFactory.CreateBulletsCreator();
-            await _gameFactory.CreateBirdCreator();
             
-            _virtualCamera.Follow = player.transform;
+            List<UniTask> tasks = new()
+            {
+                _gameFactory.CreateHp(),
+                _gameFactory.CreateBulletsCreator(),
+                _gameFactory.CreateBirdCreator()
+            };
+
+            await UniTask.WhenAll(tasks);
         }
 
         public void Exit()
